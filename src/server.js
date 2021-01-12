@@ -4,12 +4,15 @@ import bodyParser from 'body-parser';
 const articlesInfo = {
     'learn-react': {
         upvotes: 0,
+        comments: []
     },
     'learn-node': {
         upvotes: 0,
+        comments: []
     },
     'my-thoughts-on-resumes': {
         upvotes: 0,
+        comments: []
     },
 };
 
@@ -23,6 +26,12 @@ app.post('/articles/:name/upvote', (req, res) => {
     const artikelName = req.params.name;
     articlesInfo[artikelName].upvotes += 1;
     res.status(200).send(`${artikelName} now has ${articlesInfo[artikelName].upvotes}`);
+});
+app.post('/articles/:name/add-comment', (req, res) => {
+    const artikelName = req.params.name;
+    const {username, text} = req.body;
+    articlesInfo[artikelName].comments.push({username, text});
+    res.status(200).send(articlesInfo[artikelName]);
 });
 
 
