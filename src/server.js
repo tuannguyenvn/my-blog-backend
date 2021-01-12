@@ -5,6 +5,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.get('/hello', (request, response) => response.send('Hello'));
+app.get('/hello/:name', (request, response) => response.send(`Hello ${request.params.name}`));
 app.post('/hello', (request, response) => response.send(`Hello ${request.body.name} `));
 
 
