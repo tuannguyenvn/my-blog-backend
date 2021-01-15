@@ -1,0 +1,24 @@
+use('my-blog')
+
+/**Insert object to db */
+db.articles.insert([
+    {   name:'learn-react',
+        upvotes: 0,
+        comments: []
+    },
+    {
+        name: 'learn-node',
+        upvotes: 0,
+        comments: []
+    },
+    {
+        name: 'my-thoughts-on-resumes',
+        upvotes: 0,
+        comments: []
+    },
+])
+
+/**List all object */
+db.articles.find({}).pretty()
+
+db.articles.findOne({name: 'learn-react'})
